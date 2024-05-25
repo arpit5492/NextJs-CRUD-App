@@ -1,12 +1,41 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function Home() {
   const txtRef: any = useRef(null);
+  const [formData, setFormData] = useState({
+    first: "",
+    last: "",
+    age: "",
+    gender: "",
+    status: "",
+    details: "",
+  });
 
-  const handleSubmit = (e: any) => {
+  const handleChange = (e: any) => {
+    setFormData((prevState) => {
+      return {
+        ...prevState,
+        [e.target.name]: e.target.value,
+      };
+    });
+  };
+
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
+
+    const response = await fetch("http://localhost:4000/postData", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json;charset=utf-8",
+      },
+      body: JSON.stringify(formData),
+    });
+
+    if (!response.ok) {
+      console.log("Failed to send data to backend API");
+    }
   };
 
   useEffect(() => {
@@ -15,13 +44,21 @@ export default function Home() {
 
   return (
     <div className="mt-4">
-      <form className="text-lg text-center" onSubmit={handleSubmit}>
+      {/* <h2 className="m-4">{JSON.stringify(formData)}</h2> */}
+      <form
+        className="text-lg text-center"
+        onChange={handleChange}
+        onSubmit={handleSubmit}
+        method="POST"
+        action="/postData"
+      >
         <div className="mb-4">
           <label htmlFor="" className="font-bold mx-2">
             First Name:{" "}
           </label>
           <input
             type="text"
+            name="first"
             ref={txtRef}
             className="input input-info text-xl"
           />
@@ -30,38 +67,57 @@ export default function Home() {
           <label htmlFor="" className="font-bold mx-2">
             Last Name:{" "}
           </label>
-          <input type="text" className="input input-info" />
+          <input type="text" name="last" className="input input-info text-xl" />
         </div>
         <div className="mb-4">
           <label htmlFor="" className="font-bold mx-2">
             Age:{" "}
           </label>
-          <input type="number" min={1} className="input input-info" />
+          <input
+            type="number"
+            name="age"
+            min={1}
+            className="input input-info text-xl"
+          />
         </div>
         <div className="mb-4">
           <label htmlFor="" className="font-bold mx-2">
             Gender:{" "}
           </label>
-          <input type="radio" name="gender" className="mx-1" /> Male
-          <input type="radio" name="gender" className="mx-1" /> Female
+          <input type="radio" name="gender" value="Male" className="mx-1" />{" "}
+          Male
+          <input
+            type="radio"
+            name="gender"
+            value="Female"
+            className="mx-1"
+          />{" "}
+          Female
         </div>
         <div className="mb-4">
           <label htmlFor="" className="font-bold mx-2">
             Status:{" "}
           </label>
-          <input type="radio" name="status" className="mx-1" /> Married
-          <input type="radio" name="status" className="mx-1" /> Single
+          <input type="radio" name="status" value="Married" className="mx-1" />{" "}
+          Married
+          <input
+            type="radio"
+            name="status"
+            value="Single"
+            className="mx-1"
+          />{" "}
+          Single
         </div>
         <div className="mb-4">
           <label htmlFor="" className="font-bold mx-2">
             About:{" "}
           </label>
           <textarea
-            name=""
+            name="details"
             id=""
             rows={10}
             cols={30}
-            className="textarea textarea-info"
+            className="textarea textarea-info text-lg"
           ></textarea>
         </div>
         <div>
