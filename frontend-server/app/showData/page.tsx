@@ -19,7 +19,7 @@ async function Home() {
   return (
     <div>
       <div className="flex justify-center">
-        <div className="flex justify-between flex-wrap user-card">
+        <div className="flex justify-start flex-wrap user-card">
           {json.map((user: userObj) => {
             return (
               <div key={user.id} className="m-10 user-data">
