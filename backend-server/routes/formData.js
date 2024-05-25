@@ -19,4 +19,14 @@ formData.post("/postData", (req, res) => {
   );
 });
 
+formData.get("/getData", (req, res) => {
+  pool.query("select * from user", (err, data) => {
+    if (err) {
+      console.log("Error in fetching data from the database");
+    } else {
+      res.json(data);
+    }
+  });
+});
+
 export default formData;
