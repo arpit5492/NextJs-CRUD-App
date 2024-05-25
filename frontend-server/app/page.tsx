@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
 export default function Home() {
@@ -134,7 +135,9 @@ export default function Home() {
         </div>
         <div>
           <button className="btn btn-info mx-4">Submit</button>
-          <button className="btn btn-info">Show Data</button>
+          <Link href={`/showData`}>
+            <button className="btn btn-info">Show Data</button>
+          </Link>
         </div>
       </form>
     </div>
