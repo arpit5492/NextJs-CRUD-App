@@ -1,10 +1,13 @@
 import express from "express";
 import morgan from "morgan";
 import cors from "cors";
+import dotenv from "dotenv";
 import formData from "./routes/formData.js";
 
+dotenv.config();
+
 const app = express();
-const port = 4000;
+const port = process.env.PORT;
 
 // Middleware functions
 app.use(morgan("dev"));
