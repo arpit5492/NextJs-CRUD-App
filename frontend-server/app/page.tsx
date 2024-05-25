@@ -25,16 +25,20 @@ export default function Home() {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
 
-    const response = await fetch("http://localhost:4000/postData", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json;charset=utf-8",
-      },
-      body: JSON.stringify(formData),
-    });
+    if (formData.gender === "" || formData.status === "") {
+      console.log("Input field can't be empty");
+    } else {
+      const response = await fetch("http://localhost:4000/postData", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json;charset=utf-8",
+        },
+        body: JSON.stringify(formData),
+      });
 
-    if (!response.ok) {
-      console.log("Failed to send data to backend API");
+      if (!response.ok) {
+        console.log("Failed to send data to backend API");
+      }
     }
   };
 
@@ -58,6 +62,7 @@ export default function Home() {
           </label>
           <input
             type="text"
+            required
             name="first"
             ref={txtRef}
             className="input input-info text-xl"
@@ -67,7 +72,12 @@ export default function Home() {
           <label htmlFor="" className="font-bold mx-2">
             Last Name:{" "}
           </label>
-          <input type="text" name="last" className="input input-info text-xl" />
+          <input
+            required
+            type="text"
+            name="last"
+            className="input input-info text-xl"
+          />
         </div>
         <div className="mb-4">
           <label htmlFor="" className="font-bold mx-2">
@@ -75,6 +85,7 @@ export default function Home() {
           </label>
           <input
             type="number"
+            required
             name="age"
             min={1}
             className="input input-info text-xl"
@@ -115,6 +126,7 @@ export default function Home() {
           <textarea
             name="details"
             id=""
+            required
             rows={10}
             cols={30}
             className="textarea textarea-info text-lg"
