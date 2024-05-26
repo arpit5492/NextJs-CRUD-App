@@ -56,6 +56,13 @@ async function Home() {
                       </Link>
                     </div>
                     <div>
+                      <Link href={`/editData/${user.id}`}>
+                        <button className="btn btn-success ml-2 btn-sm">
+                          Update
+                        </button>
+                      </Link>
+                    </div>
+                    <div>
                       <a href="/showData">
                         <DelComp userId={user.id} />
                       </a>
@@ -68,7 +75,7 @@ async function Home() {
         </div>
       </div>
       <Link href={`/`}>
-        <button className="btn btn-sm btn-info my-5">Home</button>
+        <button className="btn btn-sm btn-info my-3">Home</button>
       </Link>
     </div>
   );
