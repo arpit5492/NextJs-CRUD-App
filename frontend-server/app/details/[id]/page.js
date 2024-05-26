@@ -16,7 +16,9 @@ export default async function Home({ params }) {
     <div>
       <p className="text-lg font-bold">{json.details}</p>
       <Link href={`/showData`}>
-        <button className="btn mt-4 btn-success btn-sm">Show Data</button>
+        <button className="btn text-white mt-4 btn-success btn-sm">
+          Show Data
+        </button>
       </Link>
     </div>
   );

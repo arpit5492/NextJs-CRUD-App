@@ -20,7 +20,7 @@ function DelComp({ userId }) {
     <>
       <button
         onClick={() => handleClick(userId)}
-        className="btn btn-success btn-sm mx-2"
+        className="btn text-white btn-success btn-sm mx-2"
       >
         Delete
       </button>

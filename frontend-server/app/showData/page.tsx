@@ -50,14 +50,14 @@ async function Home() {
                   <div className="flex justify-center">
                     <div>
                       <Link href={`/details/${user.id}`}>
-                        <button className="btn btn-success btn-sm">
+                        <button className="btn text-white btn-success btn-sm">
                           Details
                         </button>
                       </Link>
                     </div>
                     <div>
                       <Link href={`/editData/${user.id}`}>
-                        <button className="btn btn-success ml-2 btn-sm">
+                        <button className="btn btn-success text-white ml-2 btn-sm">
                           Update
                         </button>
                       </Link>
@@ -75,7 +75,7 @@ async function Home() {
         </div>
       </div>
       <Link href={`/`}>
-        <button className="btn btn-sm btn-info my-3">Home</button>
+        <button className="btn text-white btn-sm btn-info my-3">Home</button>
       </Link>
     </div>
   );
