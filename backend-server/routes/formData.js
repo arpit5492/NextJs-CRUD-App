@@ -31,13 +31,31 @@ formData.get("/getData", (req, res) => {
 
 formData.get("/getDetails/:id", (req, res) => {
   const id = parseInt(req.params.id);
-  pool.query("select details from user where id = ?", [id], (err, data) => {
+  pool.query("select * from user where id = ?", [id], (err, data) => {
     if (err) {
       console.log("Cannot fetch data from database");
     } else {
       res.json(data);
     }
   });
+});
+
+formData.patch("/editData", (req, res) => {
+  console.log(req.body);
+
+  const { id, first_name, last_name, age, gender, status, details } = req.body;
+
+  pool.query(
+    "update user set first_name = ?, last_name = ?, age = ?, gender = ?, status = ?, details = ? where id = ?",
+    [first_name, last_name, age, gender, status, details, id],
+    (err, data) => {
+      if (err) {
+        console.log("Can't update data");
+      } else {
+        console.log("Data updated successfully!!");
+      }
+    },
+  );
 });
 
 formData.delete("/delData", (req, res) => {

@@ -115,10 +115,10 @@ export default function Home() {
           <input
             type="radio"
             name="status"
-            value="Single"
+            value="Unmarried"
             className="mx-1"
           />{" "}
-          Single
+          Unmarried
         </div>
         <div className="mb-4">
           <label htmlFor="" className="font-bold mx-2">
