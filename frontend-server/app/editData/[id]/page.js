@@ -168,7 +168,7 @@ export default function Home({ params }) {
         </div>
         <div>
           <button className="btn btn-warning btn-sm mx-4">Update</button>
-          <Link href={`/showData`}>
+          <Link href="/showData">
             <button className="btn btn-warning btn-sm">Show Data</button>
           </Link>
         </div>
