@@ -134,9 +134,9 @@ export default function Home() {
           ></textarea>
         </div>
         <div>
-          <button className="btn btn-info mx-4">Submit</button>
+          <button className="btn btn-info btn-sm mx-4">Submit</button>
           <Link href={`/showData`}>
-            <button className="btn btn-info">Show Data</button>
+            <button className="btn btn-info btn-sm">Show Data</button>
           </Link>
         </div>
       </form>
