@@ -1,5 +1,11 @@
 import Link from "next/link";
 
+export function generateMetadata() {
+  return {
+    title: "Details",
+  };
+}
+
 export default async function Home({ params }) {
   const data = await fetch(`http://localhost:4000/getDetails/${params.id}`);
   const json = await data.json();

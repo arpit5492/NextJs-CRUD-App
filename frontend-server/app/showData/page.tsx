@@ -1,5 +1,12 @@
 import Link from "next/link";
 import "./_showComp.scss";
+import DelComp from "../../components/delComp";
+
+export function generateMetadata() {
+  return {
+    title: "Show Data",
+  };
+}
 
 async function Home() {
   interface userObj {
@@ -40,9 +47,20 @@ async function Home() {
                   {user.status}
                 </p>
                 <div>
-                  <Link href={`/details/${user.id}`}>
-                    <button className="btn btn-success btn-sm">Details</button>
-                  </Link>
+                  <div className="flex justify-center">
+                    <div>
+                      <Link href={`/details/${user.id}`}>
+                        <button className="btn btn-success btn-sm">
+                          Details
+                        </button>
+                      </Link>
+                    </div>
+                    <div>
+                      <a href="/showData">
+                        <DelComp userId={user.id} />
+                      </a>
+                    </div>
+                  </div>
                 </div>
               </div>
             );
@@ -50,7 +68,7 @@ async function Home() {
         </div>
       </div>
       <Link href={`/`}>
-        <button className="btn btn-sm btn-info mb-5">Home</button>
+        <button className="btn btn-sm btn-info my-5">Home</button>
       </Link>
     </div>
   );

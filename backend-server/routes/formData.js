@@ -40,4 +40,17 @@ formData.get("/getDetails/:id", (req, res) => {
   });
 });
 
+formData.delete("/delData", (req, res) => {
+  // console.log(req.body);
+  const { id } = req.body;
+
+  pool.query("delete from user where id = ?", [id], (err, data) => {
+    if (err) {
+      console.log("Failed to delete data from the database");
+    } else {
+      console.log("Data deleted successfully!!");
+    }
+  });
+});
+
 export default formData;
