@@ -29,4 +29,15 @@ formData.get("/getData", (req, res) => {
   });
 });
 
+formData.get("/getDetails/:id", (req, res) => {
+  const id = parseInt(req.params.id);
+  pool.query("select details from user where id = ?", [id], (err, data) => {
+    if (err) {
+      console.log("Cannot fetch data from database");
+    } else {
+      res.json(data);
+    }
+  });
+});
+
 export default formData;
