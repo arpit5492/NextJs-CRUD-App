@@ -82,7 +82,7 @@ Make sure you have the following installed:
 
 2. **For production environment:**
    ```bash
-   cd frontend
+   cd /frontend
    npm run build
    npm start
    ```
