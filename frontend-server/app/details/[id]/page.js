@@ -28,6 +28,7 @@ export default function Home({ params }) {
     }
   };
 
+
   useEffect(() => {
     document.title = "Details";
     fetchApi(`http://localhost:4000/getDetails/${params.id}`);
