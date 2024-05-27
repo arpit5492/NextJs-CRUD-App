@@ -1,14 +1,17 @@
+"use client";
+
 import Link from "next/link";
 import "./_showComp.scss";
 import DelComp from "../../components/delComp";
+import { useEffect, useState } from "react";
 
-export function generateMetadata() {
-  return {
-    title: "Show Data",
-  };
-}
+// export function generateMetadata() {
+//   return {
+//     title: "Show Data",
+//   };
+// }
 
-async function Home() {
+function Home() {
   interface userObj {
     id: number;
     first_name: string;
@@ -19,10 +22,27 @@ async function Home() {
     details: string;
   }
 
-  const data = await fetch("http://localhost:4000/getData", {
-    cache: "no-store",
-  });
-  const json: [] = await data.json();
+  const [json, setJson] = useState([]);
+
+  const fetchApi = async (url: string) => {
+    try {
+      const data = await fetch(url);
+      if (data.ok) {
+        const apiData = await data.json();
+        setJson(apiData);
+      } else {
+        throw new Error("500 Internal Server Error!!");
+      }
+    } catch (err: any) {
+      console.log(err.message);
+    }
+  };
+
+  useEffect(() => {
+    fetchApi("http://localhost:4000/getData");
+    document.title = "Show Data";
+  }, []);
+
   return (
     <div>
       <div className="flex justify-center">
