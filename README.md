@@ -64,7 +64,7 @@ Make sure you have the following installed:
 
 1. **Start the backend server:**
    ```bash
-   cd backend
+   cd /backend
    npm start
    ```
    The backend server can be accessed at: [http://localhost:4000](http://localhost:4000)
@@ -74,7 +74,7 @@ Make sure you have the following installed:
 1. **For development environment:**
 
    ```bash
-   cd frontend
+   cd /frontend
    npm run dev
    ```
 
