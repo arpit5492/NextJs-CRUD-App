@@ -8,7 +8,7 @@ export function generateMetadata() {
 
 export default async function Home({ params }) {
   const data = await fetch(`http://localhost:4000/getDetails/${params.id}`, {
-    cache: "no-store",
+    cache: "no-cache",
   });
   const [json] = await data.json();
 
