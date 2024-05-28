@@ -41,7 +41,7 @@ formData.get("/getDetails/:id", (req, res) => {
 });
 
 formData.patch("/editData", (req, res) => {
-  console.log(req.body);
+  // console.log(req.body);
 
   const { id, first_name, last_name, age, gender, status, details } = req.body;
 

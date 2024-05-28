@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import "./_showComp.scss";
-import DelComp from "../../components/delComp";
 import { useEffect, useState } from "react";
 
 function Home() {
@@ -17,6 +16,7 @@ function Home() {
   }
 
   const [json, setJson] = useState([]);
+  // const [cnt, setCnt] = useState(0);
 
   const fetchApi = async (url: string) => {
     try {
@@ -31,6 +31,27 @@ function Home() {
       console.log(err.message);
     }
   };
+
+  const handleClick = async (id: number) => {
+    const updatedJson = json.filter((user: userObj) => {
+      return user.id !== id;
+    });
+    setJson(updatedJson);
+    const response = await fetch("http://localhost:4000/delData", {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json;charset=utf-8",
+      },
+      body: JSON.stringify({ id }),
+    });
+
+    if (!response.ok) {
+      console.log("Failed to delete data");
+      setJson(json);
+    }
+  };
+
+  // console.log(json);
 
   useEffect(() => {
     fetchApi("http://localhost:4000/getData");
@@ -77,9 +98,12 @@ function Home() {
                       </Link>
                     </div>
                     <div>
-                      <a href="/showData">
-                        <DelComp userId={user.id} />
-                      </a>
+                      <button
+                        onClick={() => handleClick(user.id)}
+                        className="btn text-white btn-success btn-sm mx-2"
+                      >
+                        Delete
+                      </button>
                     </div>
                   </div>
                 </div>
