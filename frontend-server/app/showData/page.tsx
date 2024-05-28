@@ -5,12 +5,6 @@ import "./_showComp.scss";
 import DelComp from "../../components/delComp";
 import { useEffect, useState } from "react";
 
-// export function generateMetadata() {
-//   return {
-//     title: "Show Data",
-//   };
-// }
-
 function Home() {
   interface userObj {
     id: number;
@@ -24,21 +18,35 @@ function Home() {
 
   const [json, setJson] = useState([]);
 
-  const fetchApi = async (url: string) => {
-    try {
-      const data = await fetch(url);
-      if (data.ok) {
-        const apiData = await data.json();
-        setJson(apiData);
-      } else {
-        throw new Error("500 Internal Server Error!!");
-      }
-    } catch (err: any) {
-      console.log(err.message);
-    }
-  };
+  // const fetchApi = async (url: string) => {
+  //   try {
+  //     const data = await fetch(url);
+  //     if (data.ok) {
+  //       const apiData = await data.json();
+  //       setJson(apiData);
+  //     } else {
+  //       throw new Error("500 Internal Server Error!!");
+  //     }
+  //   } catch (err: any) {
+  //     console.log(err.message);
+  //   }
+  // };
 
   useEffect(() => {
+    const fetchApi = async (url: string) => {
+      try {
+        const data = await fetch(url);
+        if (data.ok) {
+          const apiData = await data.json();
+          setJson(apiData);
+        } else {
+          throw new Error("500 Internal Server Error!!");
+        }
+      } catch (err: any) {
+        console.log(err.message);
+      }
+    };
+
     fetchApi("http://localhost:4000/getData");
     document.title = "Show Data";
   }, []);

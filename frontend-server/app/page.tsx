@@ -73,12 +73,7 @@ export default function Home() {
           <label htmlFor="" className="font-bold mx-2">
             Last Name:{" "}
           </label>
-          <input
-            required
-            type="text"
-            name="last"
-            className="input input-info text-xl"
-          />
+          <input type="text" name="last" className="input input-info text-xl" />
         </div>
         <div className="mb-4">
           <label htmlFor="" className="font-bold mx-2">

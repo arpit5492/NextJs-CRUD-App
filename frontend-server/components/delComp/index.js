@@ -1,7 +1,5 @@
 "use client";
 
-import Link from "next/link";
-
 function DelComp({ userId }) {
   const handleClick = async (id) => {
     // console.log(id);
