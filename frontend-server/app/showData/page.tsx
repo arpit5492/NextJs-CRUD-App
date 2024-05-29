@@ -16,7 +16,6 @@ function Home() {
   }
 
   const [json, setJson] = useState([]);
-  // const [cnt, setCnt] = useState(0);
 
   const fetchApi = async (url: string) => {
     try {
@@ -32,7 +31,7 @@ function Home() {
     }
   };
 
-  const handleClick = async (id: number) => {
+  const handleDelete = async (id: number) => {
     const updatedJson = json.filter((user: userObj) => {
       return user.id !== id;
     });
@@ -99,7 +98,7 @@ function Home() {
                     </div>
                     <div>
                       <button
-                        onClick={() => handleClick(user.id)}
+                        onClick={() => handleDelete(user.id)}
                         className="btn text-white btn-success btn-sm mx-2"
                       >
                         Delete
